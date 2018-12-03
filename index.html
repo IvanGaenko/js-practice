@@ -10,17 +10,17 @@
   <header class="header">
     <div class="header-container">
       <span class="header-sum-title">Aviable Budget in December 2018:</span>
-      <h1 class="header-sum-money">+480.00</h1>
+      <h1 class="header-sum-money" id="jsMoney">+480.00</h1>
       <div class="header-income">
         <span class="header-title">INCOME</span>
-        <span class="header-sum">+500.00</span>
+        <span class="header-sum" id="jsHeaderSumIncome">+500.00</span>
       </div>
       <div class="header-expenses">
         <div class="header-expenses-content">
           <span class="header-title">EXPENSES</span>
-          <span class="header-sum">-20.00</span>
+          <span class="header-sum" id="jsHeaderSumExpenses">-20.00</span>
         </div>
-        <span class="header-percent">5%</span>
+        <span class="header-percent">100%</span>
       </div>
     </div>
   </header>
@@ -28,13 +28,13 @@
 
       <section class="input-value">
         <div class="input-value-container">
-          <select name="" id="js-plus-minus" class="plus-minus">
-            <option value="0">+</option>
-            <option value="1">-</option>
+          <select name="" id="jsPlusMinus" class="plus-minus">
+            <option value="+">+</option>
+            <option value="-">-</option>
           </select>
-          <input type="text" class="add-description" placeholder="Add description">
-          <input type="text" class="value" placeholder="Value">
-          <button type="submit" class="submit-button">Add</button>
+          <input type="text" class="add-description" id="addDescription" placeholder="Add description">
+          <input type="text" class="add-value" id="addValue" placeholder="Value">
+          <button type="submit" class="submit-button" id="submitButton">Add</button>
         </div>
       </section>
 
@@ -42,11 +42,11 @@
         <div class="column-container">
           <div class="income-column">
               <h2 class="column-title column-title-income">INCOME</h2>
-              <div class="income-column-input"></div>
+              <div class="income-column-input" id="incomeColumnInput"></div>
           </div>
           <div class="expenses-column">
               <h2 class="column-title column-title-expenses">EXPENSES</h2>
-              <div class="expenses-column-input"></div>
+              <div class="expenses-column-input" id="expensesColumnInput"></div>
           </div>
         </div>
       </section>

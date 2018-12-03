@@ -98,7 +98,7 @@
 }
 
 .add-description,
-.value,
+.add-value,
 .plus-minus {
   height: 50px;
 }
@@ -108,7 +108,7 @@
   flex-direction: column;
   width: 100%;
 }
-.value,
+.add-value,
 .add-description,
 .plus-minus {
   width: 100%;
@@ -118,7 +118,7 @@
   padding-left: 10px;
 }
 
-.value {
+.add-value {
   max-width: 100px;
   margin-right: 20px;
 }
