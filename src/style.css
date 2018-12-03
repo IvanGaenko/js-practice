@@ -161,15 +161,17 @@
 }
 .column-title-income {
   color: rgb(137, 135, 235);
+  margin-bottom: 10px;
 }
 
 .column-title-expenses {
   color: rgb(255, 72, 0);
+  margin-bottom: 10px;
 }
 .income-column,
 .expenses-column {
   background-color: rgba(222, 184, 135, 0.589);
-  min-height: 400px;
+  min-height: 100px;
   height: 100%;
   padding: 50px;
   width: 100%;
@@ -178,4 +180,20 @@
 
 .income-column {
   margin-right: 25px;
+}
+
+.note {
+  width: 100%;
+  padding: 10px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  background-color: rgba(135, 207, 235, 0.685);
+  border-radius: 5px;
+  margin-bottom: 10px;
+}
+
+.btn {
+  background-color: chartreuse;
+  border: none;
 }
