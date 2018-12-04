@@ -31,6 +31,18 @@ module.exports = {
         use: [
         "file-loader"
         ]
+      },
+      {
+        test: /\.(woff|woff2|eot|ttf|otf)$/,
+        use: [
+          "file-loader"
+          ]
+      },
+      {
+        test: /\.js$/,
+        exclude: /node_modules/,
+        loader: "babel-loader",
+        options: { presets: ["@babel/preset-env"] }
       }
     ]
   }

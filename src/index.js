@@ -2,6 +2,13 @@ import _ from 'lodash';
 import './style.css';
 import './reset.css';
 
+// import Background from '/background,jpg';
+
+// let myBackground = new Image();
+// myBackground.src = Background;
+// const header = document.getElementById('header');
+// header.appendChild(myBackground);
+
 const addDescription = document.getElementById("addDescription");
 const addValue = document.getElementById("addValue");
 const submitButton = document.getElementById("submitButton");
