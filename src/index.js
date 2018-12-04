@@ -24,18 +24,20 @@ class CashTracker {
     this.moneySpend = document.createElement('span');
     this.moneyEarn = document.createElement('span');
     this.deleteButton = document.createElement('button');
+    this.spendPercent = document.createElement('div');
     this.jsPlusMinus = document.getElementById('jsPlusMinus');
     this.incomeColumnInput = document.getElementById("incomeColumnInput");
     this.expensesColumnInput = document.getElementById("expensesColumnInput");
     this.jsHeaderSumIncome = document.getElementById('jsHeaderSumIncome');
     this.jsHeaderSumExpenses = document.getElementById('jsHeaderSumExpenses');
     this.jsMoney = document.getElementById('jsMoney');
+    this.headerPercent = document.getElementById('headerPercent');
     this.descValue = addDescription.value;
-    // if (Number.isInteger(addValue.value) || !(addValue.value === "")) {
-    //   this.valValue = addValue.value;
-    // } else {
-    //   this.valValue = 0;
-    // };
+    if (!(Number.isNaN(Number(addValue.value)))) {
+      this.valValue = Math.abs(Number(addValue.value));
+    } else {
+      this.valValue = "0";
+    }; 
   }
   
   submit() {
@@ -48,35 +50,46 @@ class CashTracker {
     } else {
       spendConfig.set(`spendNote-${this.spendId}`, this.valValue);
       this.spendId = spendId++;
-      console.log(spendConfig);
       this.spendSum();
       this.balance();
-      this.render();
+      this.render(); 
     }
   }
 
   earnSum() {
     let esum = [];
+    let signPlus = "+";
     for (let val of earnConfig.values()) { esum.push(Number(val)) };
     let sumE = esum.reduce((first, second) => first + second, 0);
-    this.jsHeaderSumIncome.innerHTML = `+${sumE}`;
-    console.log(sumE);
+    if (sumE === 0) { signPlus = "" } ;
+    this.jsHeaderSumIncome.innerHTML = `${signPlus + sumE}`;
     return sumE;
   }
 
   spendSum() {
     let spSum = [];
+    let signMinus = "-";
     for (let val of spendConfig.values()) { spSum.push(Number(val)) };
     let sumS = spSum.reduce((first, second) => first + second, 0);
-    this.jsHeaderSumExpenses.innerHTML = `-${sumS}`;
-    console.log(sumS);
+    if (sumS === 0) { signMinus = "" };
+    this.jsHeaderSumExpenses.innerHTML = `${signMinus + sumS}`;
     return sumS;
   }
 
   balance() {
-    let bal = this.earnSum() - this.spendSum();
-    this.jsMoney.innerHTML = `${bal}`;
-    console.log("Balance"+bal);
+    let balanceTotal = this.earnSum() - this.spendSum();
+    let balanceSign = "";
+    if (balanceTotal > 0) { balanceSign = "+"; };
+    this.jsMoney.innerHTML = `${balanceSign + balanceTotal}`;
+    let earnSum = this.earnSum();
+    let spendSum = this.spendSum();
+    if (earnSum === 0) { earnSum = spendSum };
+    let percentTotal = (100 * spendSum / earnSum).toFixed(1);
+    if (!(isNaN(percentTotal))) {
+      this.headerPercent.innerHTML = `${percentTotal}%`;
+    } else {
+      this.headerPercent.innerHTML = "0.0%";
+    }
   }
 
   render() {
@@ -84,7 +97,9 @@ class CashTracker {
     earnConfig.forEach((earnId) => {
       this.note.id = `earnNote-${this.earnId}`;
       this.note.classList.add('note', 'earn-note');
+      this.description.classList.add('description');
       this.description.innerHTML = this.descValue;
+      this.moneyEarn.classList.add('money-value');
       this.moneyEarn.innerHTML = this.valValue;
       this.deleteButton.innerText = 'Delete';
       this.deleteButton.type = 'button';
@@ -99,15 +114,21 @@ class CashTracker {
       spendConfig.forEach((spendId) => {
         this.note.id = `spendNote-${this.spendId}`;
         this.note.classList.add('note', 'spend-note');
+        this.description.classList.add('description');
         this.description.innerHTML = this.descValue;
+        this.moneySpend.classList.add('money-value');
         this.moneySpend.innerHTML = this.valValue;
         this.deleteButton.innerText = 'Delete';
         this.deleteButton.type = 'button';
         this.deleteButton.id = `button-remove-${this.spendId}`;
         this.deleteButton.classList.add('btn', 'note-spend-delete-button');
+        this.spendPercent.id = `spendPercent-${this.spendId}`;
+        this.spendPercent.classList.add('spend-btn');
+        this.spendPercent.innerHTML = "0.0%";
         this.note.appendChild(this.description);
         this.note.appendChild(this.moneySpend);
         this.note.appendChild(this.deleteButton);
+        this.note.appendChild(this.spendPercent);
         return this.expensesColumnInput.appendChild(this.note);
         });
       }

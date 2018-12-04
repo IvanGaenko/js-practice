@@ -177,12 +177,12 @@
 }
 .income-column,
 .expenses-column {
-  background-color: rgba(222, 184, 135, 0.589);
+  background-color: rgba(222, 184, 135, 0.5);
   min-height: 100px;
   height: 100%;
-  padding: 50px;
+  padding: 10px;
   width: 100%;
-  border-radius: 30px;
+  border-radius: 20px;
 }
 
 .income-column {
@@ -195,6 +195,7 @@
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  align-items: center;
   background-color: rgba(135, 207, 235, 0.685);
   border-radius: 5px;
   margin-bottom: 10px;
@@ -203,4 +204,32 @@
 .btn {
   background-color: chartreuse;
   border: none;
+  border-radius: 5px;
+  height: 25px;
+}
+
+.spend-btn {
+  font-family: sans-serif;
+  font-size: 10px;
+  background-color: rgb(255, 72, 0);
+  padding: 5px;
+  display: flex;
+  align-items: center;
+  border-radius: 5px;
+  margin-left: 5px;
+  height: 25px;
+}
+
+.description {
+  width: 100%;
+  max-width: 250px;
+  margin-right: 10px;
+}
+
+.money-value {
+  width: 100%;
+  /* max-width: 50px; */
+  margin-right: 10px;
+  display: flex;
+  justify-content: center;
 }
