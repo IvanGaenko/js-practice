@@ -31,9 +31,13 @@ class CashTracker {
     this.jsHeaderSumExpenses = document.getElementById('jsHeaderSumExpenses');
     this.jsMoney = document.getElementById('jsMoney');
     this.descValue = addDescription.value;
-    this.valValue = addValue.value;
+    // if (Number.isInteger(addValue.value) || !(addValue.value === "")) {
+    //   this.valValue = addValue.value;
+    // } else {
+    //   this.valValue = 0;
+    // };
   }
-
+  
   submit() {
     if (jsPlusMinus.value == '+') {
       earnConfig.set(`earnNote-${this.earnId}`, this.valValue);

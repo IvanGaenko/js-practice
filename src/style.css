@@ -1,7 +1,14 @@
 .header {
     padding-top: 50px;
     padding-bottom: 40px;
-    background-image: url(./header-background.jpg);
+    background-image: url(./background.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+
+}
+
+.body {
+  background-color: beige;;
 }
 
 .header-container {
@@ -100,7 +107,7 @@
 .add-description,
 .add-value,
 .plus-minus {
-  height: 50px;
+  height: 35px;
 }
 
 .plus-minus-form {
@@ -135,7 +142,7 @@
 .submit-button {
   max-width: 50px;
   width: 100%;
-  height: 50px;
+  height: 35px;
   border: none;
   border-radius: 5px;
 }
