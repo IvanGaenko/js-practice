@@ -151,11 +151,11 @@ class CashTracker {
   }
 };
 
-submitButton.addEventListener('click', () => {
+submitButton.addEventListener('click', (e) => {
+  if (e.target.classList[0] === 'submit-button') {
   const cash = new CashTracker();
   cash.submit();
-  return cash;
-});
+}});
 
 incomeColumn.addEventListener('click', (e) => {
   if (e.target.classList[1] === 'note-earn-delete-button') {
