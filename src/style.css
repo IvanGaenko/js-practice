@@ -125,6 +125,11 @@
   padding-left: 10px;
 }
 
+.add-value-error,
+.add-description-error {
+  border: solid 1px red;
+}
+
 .add-value {
   max-width: 100px;
   margin-right: 20px;

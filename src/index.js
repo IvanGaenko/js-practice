@@ -4,7 +4,9 @@
 /* eslint-disable no-undef */
 import './style.css';
 import './reset.css';
-import { addDescription, addValue } from './domVariables';
+import {
+  addDescription, addValue, submitButton, incomeColumn, expensesColumn,
+} from './domVariables';
 
 let earnId = 0;
 let spendId = 0;
@@ -15,12 +17,14 @@ class CashTracker {
   constructor() {
     this.earnId = earnId;
     this.spendId = spendId;
+
     this.note = document.createElement('div');
     this.description = document.createElement('span');
     this.moneySpend = document.createElement('span');
     this.moneyEarn = document.createElement('span');
     this.deleteButton = document.createElement('button');
     this.spendPercent = document.createElement('div');
+
     this.jsPlusMinus = document.getElementById('jsPlusMinus');
     this.incomeColumnInput = document.getElementById('incomeColumnInput');
     this.expensesColumnInput = document.getElementById('expensesColumnInput');
@@ -34,7 +38,7 @@ class CashTracker {
     if (!(Number.isNaN(Number(addValue.value)))) {
       this.valValue = Number(addValue.value);
     } else {
-      this.valValue = '0'; // add validation
+      this.valValue = '0';
     }
   }
 
@@ -186,14 +190,21 @@ class CashTracker {
 }
 
 submitButton.addEventListener('click', (e) => {
-  if (e.target.classList[0] === 'submit-button') {
+  if (e.target.classList[0] === 'submit-button' && !(addValue.value === '') && !(addDescription.value === '')) {
+    addValue.classList.remove('add-value-error');
+    addDescription.classList.remove('add-description-error');
     const cash = new CashTracker();
     cash.submit();
+  } else {
+    addValue.classList.add('add-value-error');
+    addDescription.classList.add('add-description-error');
   }
 });
 
 incomeColumn.addEventListener('click', (e) => {
   if (e.target.classList[1] === 'note-earn-delete-button') {
+    addValue.classList.remove('add-value-error');
+    addDescription.classList.remove('add-description-error');
     const delValue = e.target.id.split('-');
     const delEarnValue = `earnNote-${delValue[2]}`;
     const cash = new CashTracker();
@@ -203,6 +214,8 @@ incomeColumn.addEventListener('click', (e) => {
 
 expensesColumn.addEventListener('click', (e) => {
   if (e.target.classList[1] === 'note-spend-delete-button') {
+    addValue.classList.remove('add-value-error');
+    addDescription.classList.remove('add-description-error');
     const delValue = e.target.id.split('-');
     const delSpendValue = `spendNote-${delValue[2]}`;
     const cash = new CashTracker();
