@@ -3,6 +3,7 @@
 /* eslint-disable no-restricted-syntax */
 /* eslint-disable no-undef */
 import './style.css';
+import './test.scss';
 import './reset.css';
 import {
   addDescription, addValue, submitButton, incomeColumn, expensesColumn,
@@ -50,7 +51,7 @@ class CashTracker {
       addValue.value = '';
       this.earnSum();
       this.balance();
-      this.render();
+      this.renderEarn();
     } else {
       spendMap.set(`spendNote-${this.spendId}`, Math.abs(this.valValue));
       this.spendId = spendId++;
@@ -58,7 +59,7 @@ class CashTracker {
       addValue.value = '';
       this.spendSum();
       this.balance();
-      this.render();
+      this.renderSpend();
     }
   }
 
@@ -126,13 +127,13 @@ class CashTracker {
     }
   }
 
-  render() {
-    if (jsPlusMinus.value === '+') {
-      this.renderEarn();
-    } else {
-      this.renderSpend();
-    }
-  }
+  // render() {
+  //   if (jsPlusMinus.value === '+') {
+  //     this.renderEarn();
+  //   } else {
+  //     this.renderSpend();
+  //   }
+  // }
 
   renderEarn() {
     this.note.id = `earnNote-${this.earnId}`;
